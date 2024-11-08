@@ -1,44 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-  <div class="my-weather-app">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="src/style.css" />
+    <title>My weather application</title>
+  </head>
+  <body>
+    <div class="my-weather-app">
       <header>
-        <form id="search-form">
+        <form>
           <input
             type="search"
             placeholder="Enter a city.."
             required
-            class="search-input"
-            id="search-input"
+            class="search-form"
+            id="search-form"
           />
-          <input type="submit" value="Search" class="search-button" />
+          <input type="submit" value="Search" class="search-btn" id="search-btn"/>
         </form>
       </header>
       <main>
-        <div class="current-weather">
+        <div class="current-weather-data">
           <div>
-            <h1 class="current-city" id="current-city">Prague</h1>
-            <p class="current-details">
-              <span id="current-date"></span>, moderate rain <br />
+            <h1 class="weather-city" id="weather-city">Paris</h1>
+            <p class="current-forecast">
+              <span id="current-date"> 15:32</span>, moderate rain <br />
               Humidity: <strong>87%</strong>, Wind: <strong>7.2km/h</strong>
             </p>
           </div>
-          <div class="current-temperature">
-            <span class="current-temperature-icon">☀️</span
-            ><span
-              class="current-temperature-value"
-              id="current-temperature"
-            ></span
-            ><span class="current-temperature-unit">°C</span>
+          <div class="current-temp" id="current-temp">
+            <span class="temp-icon">☀️</span
+            ><span class="current-temp-value"> 14</span
+            ><span class="current-temp-unit">°C</span>
           </div>
         </div>
       </main>
-        <footer>
+      <footer>
         <p>
           This project was coded by
           <a href="https://github.com/ladyyasita" target="_blank">Iaroslava Pozniak</a> and is
@@ -47,4 +45,5 @@
         </p>
       </footer>
 </body>
+<script src="src/index.js"></script>
 </html>
