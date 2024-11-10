@@ -10,8 +10,10 @@ function displayWeather(response) {
   let windElement = document.querySelector("#wind-speed");
   windElement.innerHTML = `${response.data.wind.speed}km/h`;
   let currentTimeElement = document.querySelector("#current-time");
-  let date = new Date(response.date.time * 1000);
+  let date = new Date(response.data.time * 1000);
   currentTimeElement.innerHTML = formatDate(date);
+  iconTempElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="temp-icon"/>`;
+  let iconTempElement = document.querySelector("#temp-icon");
 }
 
 function search(city) {
@@ -48,3 +50,4 @@ function formatDate(date) {
   }
   return `${day} ${hours}:${minutes}`;
 }
+search("Prague");

@@ -67,8 +67,8 @@ main {
 }
 
 .temp-icon {
-  font-size: 44px;
-  margin-top: 22px;
+  width: 88px;
+  height: 88px;
 }
 
 .current-temp-value {
@@ -82,7 +82,7 @@ main {
 
 .current-temp-unit {
   margin-top: 16px;
-  font-size: 28px;
+  font-size: 33px;
 }
 
 footer {
