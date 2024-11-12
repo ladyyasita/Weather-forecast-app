@@ -14,11 +14,16 @@ function displayWeather(response) {
   currentTimeElement.innerHTML = formatDate(date);
   iconTempElement.innerHTML = `<img src="${response.data.condition.icon_url}" class="temp-icon"/>`;
   let iconTempElement = document.querySelector("#temp-icon");
+  let precipitationElement = document.querySelector("#precipitation");
+  let precipitation = response.data.rain;
+  precipitationElement.innerHTML = `${precipitation} mm`;
+  console.log(response.data.condition.rain);
 }
 
 function search(city) {
   let apiKey = "c3a451d0adt46fobb2b9a77755f49315";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+  let apiUrl = `http://api.openweathermap.org/data/2.5/weather?q={city_name}&appid={your_api_key}&units=metric
+`;
   axios.get(apiUrl).then(displayWeather);
 }
 function handleSubmit(event) {
