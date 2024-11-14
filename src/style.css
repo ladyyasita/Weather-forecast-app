@@ -69,7 +69,12 @@ main {
   line-height: 24px;
   font-weight: 500;
 }
-
+.realFeel {
+  font-size: 19px;
+  color: rgba(40, 44, 104, 0.4);
+  line-height: 26px;
+  font-style: italic;
+}
 div strong {
   color: #f65282;
 }
