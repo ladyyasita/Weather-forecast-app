@@ -55,3 +55,23 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 search("Prague");
+
+function displayForecast() {
+  let days = [`Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`];
+  let forecastHtml ="";
+  days.forEach(function(day){
+
+  forecastHtml = forecastHtml +`<div class ="weather-forecast-day">
+            <div class="weather-forecast-date">${day}</div>
+  <div class="weather-forecast-icon">🌞</div>
+      <div class="weather-forecast-temps">
+         <div class="weather-forecast-temp"><strong>11° </strong></div>
+    <div class="weather-forecast-temp">12°</div></div>
+          </div>
+          `;
+});
+forecastElement.innerHTML = forecastHtml;
+  let forecast = document.querySelector("#weather-forecast");
+
+}
+displayForecast();
