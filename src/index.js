@@ -17,6 +17,8 @@ function displayWeather(response) {
   let realFeel = response.data.main.feels_like;
   let realFeelElement = document.querySelector("#realfeel");
   realFeelElement.innerHTML = `${Math.round(realFeel)}°C`;
+
+  getForecast(response.data.city);
 }
 
 function search(city) {
@@ -54,14 +56,19 @@ function formatDate(date) {
   }
   return `${day} ${hours}:${minutes}`;
 }
-search("Prague");
-
-function displayForecast() {
+function getForecast(city) {
+  let apiKey = `c3a451d0adt46fobb2b9a77755f49315`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+}
+function displayForecast(response) {
+  console.log(response.data);
   let days = [`Mon`, `Tue`, `Wed`, `Thu`, `Fri`, `Sat`, `Sun`];
-  let forecastHtml ="";
-  days.forEach(function(day){
-
-  forecastHtml = forecastHtml +`<div class ="weather-forecast-day">
+  let forecastHtml = "";
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `<div class ="weather-forecast-day">
             <div class="weather-forecast-date">${day}</div>
   <div class="weather-forecast-icon">🌞</div>
       <div class="weather-forecast-temps">
@@ -69,9 +76,8 @@ function displayForecast() {
     <div class="weather-forecast-temp">12°</div></div>
           </div>
           `;
-});
-forecastElement.innerHTML = forecastHtml;
+  });
   let forecast = document.querySelector("#weather-forecast");
-
+  forecastElement.innerHTML = forecastHtml;
 }
-displayForecast();
+search("Prague");
