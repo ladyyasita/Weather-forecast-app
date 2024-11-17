@@ -68,26 +68,32 @@ function getForecast(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
+  console.log("Forecast Response Data:", response.data); // Log entire response
+
   let forecastHtml = "";
-  response.data.list.forEach(function (displayForecast, index) {
+  let forecast = document.querySelector("#weather-forecast");
+
+  response.data.list.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHtml += `<div class ="weather-forecast-day">
-            <div class="weather-forecast-date">${formatDay(forecast.dt)}</div>
+            <div class="weather-forecast-date">${formatDay(
+              forecastDay.dt
+            )}</div>
   >< img src="https://openweathermap.org/img/wn/${
-    forecast.weather[0].icon
+    forecastDay.weather[0].icon
   }@2x.png class="weather-forecast-icon">
       <div class="weather-forecast-temps">
     <div class="weather-forecast-temp">${Math.round(
-      forecast.main.temp_min
+      forecastDay.main.temp_min
     )}°</div>
-    <div class="weather-forecast-temp">${Math.round(
-      forecast.main.temp_max
-    )}°</div></div>
+    <div class="weather-forecast-temp"> ${Math.round(
+      forecastDay.main.temp_max
+    )}°</div>
+    </div>
           </div>
           `;
     }
   });
-  let forecast = document.querySelector("#weather-forecast");
   forecastElement.innerHTML = forecastHtml;
 }
 search("Prague");
