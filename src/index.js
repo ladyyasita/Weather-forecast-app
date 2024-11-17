@@ -68,7 +68,7 @@ function getForecast(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
-  console.log("Forecast Response Data:", response.data);
+  console.log(response.data);
 
   let forecastHtml = "";
   let forecast = document.querySelector("#weather-forecast");
