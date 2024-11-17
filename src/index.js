@@ -68,10 +68,7 @@ function getForecast(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
-  console.log(response.data);
-
   let forecastHtml = "";
-  let forecast = document.querySelector("#weather-forecast");
 
   response.data.list.forEach(function (forecastDay, index) {
     if (index < 5) {
@@ -95,5 +92,6 @@ function displayForecast(response) {
     }
   });
   forecastElement.innerHTML = forecastHtml;
+  let forecastElement = document.querySelector("#weather-forecast");
 }
 search("Prague");
