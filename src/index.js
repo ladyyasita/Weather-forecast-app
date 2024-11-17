@@ -57,13 +57,14 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 function formatDay(time) {
-  let date = new Date(timestamp * 1000);
+  let date = new Date(time * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   return days[date.getDay()];
 }
 function getForecast(city) {
-  let apiKey = `5f472b7acba333cd8a035ea85a0d4d4c`;
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${apiKey}&units=metric`;
+
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
@@ -71,15 +72,14 @@ function displayForecast(response) {
   response.data.list.forEach(function (displayForecast, index) {
     if (index < 5) {
       forecastHtml += `<div class ="weather-forecast-day">
-            <div class="weather-forecast-date">${day}</div>
-  >< img src="${forecast.weather[0].icon}"/ class="weather-forecast-icon">
+            <div class="weather-forecast-date">${formatDay(forecast.dt)}</div>
+  >< img src="https://openweathermap.org/img/wn/${
+    forecast.weather[0].icon
+  }@2x.png class="weather-forecast-icon">
       <div class="weather-forecast-temps">
     <div class="weather-forecast-temp">${Math.round(
       forecast.main.temp_min
-    )}°</div></div>
-         <div class="weather-forecast-temp"><strong>${
-           day.tempreture.maximum
-         }° </strong></div>
+    )}°</div>
     <div class="weather-forecast-temp">${Math.round(
       forecast.main.temp_max
     )}°</div></div>
