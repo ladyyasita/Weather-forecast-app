@@ -76,9 +76,9 @@ function displayForecast(response) {
             <div class="weather-forecast-date">${formatDay(
               forecastDay.dt
             )}</div>
-  >< img src="https://openweathermap.org/img/wn/${
+  <img src="https://openweathermap.org/img/wn/${
     forecastDay.weather[0].icon
-  }@2x.png class="weather-forecast-icon">
+  }@2x.png" class="weather-forecast-icon" />
       <div class="weather-forecast-temps">
     <div class="weather-forecast-temp">${Math.round(
       forecastDay.main.temp_min
@@ -91,7 +91,7 @@ function displayForecast(response) {
           `;
     }
   });
-  forecastElement.innerHTML = forecastHtml;
   let forecastElement = document.querySelector("#weather-forecast");
+  forecastElement.innerHTML = forecastHtml;
 }
 search("Prague");
