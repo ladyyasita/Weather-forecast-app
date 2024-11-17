@@ -72,7 +72,9 @@ function displayForecast(response) {
 
   response.data.list.forEach(function (forecastDay, index) {
     if (index < 5) {
-      forecastHtml += `<div class ="weather-forecast-day">
+      forecastHtml =
+        forecastHtml +
+        `<div class ="weather-forecast-day">
             <div class="weather-forecast-date">${formatDay(
               forecastDay.dt
             )}</div>
