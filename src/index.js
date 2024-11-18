@@ -69,9 +69,18 @@ function getForecast(city) {
   axios.get(apiUrl).then(displayForecast);
 }
 function displayForecast(response) {
+  console.log(response.data);
   let forecastHtml = "";
+  let dailyForecasts = [];
 
-  response.data.list.forEach(function (forecastDay, index) {
+  response.data.list.forEach(function (forecastDay) {
+    let time = new Date(forecastDay.dt * 1000).getHours();
+    if (time >= 11 && time <= 13) {
+      dailyForecasts.push(forecastDay);
+    }
+  });
+
+  dailyForecasts.forEach(function (forecastDay, index) {
     if (index < 5) {
       forecastHtml =
         forecastHtml +
